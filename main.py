@@ -6,21 +6,40 @@ from common import process_target_response, initialize_conversations
 import psutil
 import os
 import time
+
 def memory_usage_psutil():
     # Returns the memory usage in MB
     process = psutil.Process(os.getpid())
     mem = process.memory_info().rss / float(2 ** 20)  # bytes to MB
     return mem
 
+def load_transcript_template(path: str) -> dict:
+    """
+    Loads a transcript template from a given file path.
+
+    Args:
+        path (str): The file path to the transcript template.
+    Returns:
+        Dict: The loaded transcript template.
+    """
+    import json
+    with open(path, 'r') as f:
+        transcript_template = json.load(f)
+    
+    # We want just the last step:
+    step = transcript_template['data'][5]['request']['json'][1]['content'][0]['text']
+    system_prompt = transcript_template['data'][5]['request']['json'][0]['content']
+    return step, system_prompt
 
 def main(args):
     memory_before = memory_usage_psutil()
 
-
-
+    transcript_step, web_agent_system_prompt = load_transcript_template(args.transcript) if args.transcript is not None else None
 
     # Initialize models and judge
     attackLM, targetLM = load_attack_and_target_models(args)
+    # Change the system prompt of the targetLM to the web-agent one:
+    targetLM.model.system_prompt = web_agent_system_prompt
     judgeLM = load_judge(args)
     
     # Initialize conversations
@@ -47,6 +66,7 @@ def main(args):
         print(f"Memory before: {memory_before} MB")
         print(f"Memory after: {memory_after} MB")
         # Get target responses
+        adv_prompt_list = [transcript_step.replace("[MALICIOUS_INSTRUCTION_PLACEHOLDER]", prompt) if transcript_step is not None else prompt for prompt in adv_prompt_list]
         target_response_list = targetLM.get_response(adv_prompt_list)
         logger.debug("Finished getting target responses.")
         
@@ -209,6 +229,13 @@ if __name__ == '__main__':
         help="Level of verbosity of outputs, use -v for some outputs and -vv for all outputs.")
     ##################################################
     
+    parser.add_argument(
+        "-t",
+        "--transcript",
+        type = str,
+        default=None,
+        help="Path to the web-agent transcript template JSON file."
+    )
     
     args = parser.parse_args()
     logger.set_level(args.verbosity)

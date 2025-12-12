@@ -66,10 +66,15 @@ class APILiteLLM(LanguageModel):
                          top_p: float,
                          extra_eos_tokens: list[str] = None) -> list[str]: 
         
-        eos_tokens = self.eos_tokens 
+        # Build stop tokens safely without mutating defaults
+        eos_tokens = list(self.eos_tokens)
 
         if extra_eos_tokens:
-            eos_tokens.extend(extra_eos_tokens)
+            eos_tokens = eos_tokens + list(extra_eos_tokens)
+        # OpenAI APIs allow a maximum of 4 stop sequences.
+        if len(eos_tokens) > 4:
+            logger.warning(f"Stop tokens exceed 4; truncating to first 4: {eos_tokens}")
+            eos_tokens = eos_tokens[:4]
         if self.use_open_source_model:
             self._update_prompt_template()
         
