@@ -1,8 +1,8 @@
 import os 
 import litellm
-from config import TOGETHER_MODEL_NAMES, LITELLM_TEMPLATES, API_KEY_NAMES, Model
-from loggers import logger
-from common import get_api_key
+from .config import TOGETHER_MODEL_NAMES, LITELLM_TEMPLATES, API_KEY_NAMES, Model
+from .loggers import logger
+from .common import get_api_key
 
 class LanguageModel():
     def __init__(self, model_name):

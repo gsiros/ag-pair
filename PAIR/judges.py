@@ -2,9 +2,9 @@ from fastchat.model import (
     get_conversation_template
 )
 import re
-from system_prompts import get_judge_system_prompt
-from language_models import APILiteLLM
-from loggers import logger
+from .system_prompts import get_judge_system_prompt
+from .language_models import APILiteLLM
+from .loggers import logger
 
 from jailbreakbench import Classifier
 import os

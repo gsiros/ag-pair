@@ -1,8 +1,8 @@
 import ast
-from loggers import logger
+from .loggers import logger
 from fastchat.model import get_conversation_template
-from system_prompts import get_attacker_system_prompts
-from config import API_KEY_NAMES
+from .system_prompts import get_attacker_system_prompts
+from .config import API_KEY_NAMES
 import os 
 
 def extract_json(s):

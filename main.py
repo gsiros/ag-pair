@@ -1,8 +1,8 @@
 import argparse
-from loggers import WandBLogger, logger
-from judges import load_judge
-from conversers import load_attack_and_target_models
-from common import process_target_response, initialize_conversations
+from PAIR.loggers import WandBLogger, logger
+from PAIR.judges import load_judge
+from PAIR.conversers import load_attack_and_target_models
+from PAIR.common import process_target_response, initialize_conversations
 import psutil
 import os
 import time

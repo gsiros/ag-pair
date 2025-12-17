@@ -1,6 +1,6 @@
-from common import get_api_key, conv_template, extract_json
-from language_models import APILiteLLM
-from config import FASTCHAT_TEMPLATE_NAMES, Model
+from .common import get_api_key, conv_template, extract_json
+from .language_models import APILiteLLM
+from .config import FASTCHAT_TEMPLATE_NAMES, Model
 
 
 def load_attack_and_target_models(args):
@@ -54,7 +54,7 @@ class AttackLM():
         self.max_n_tokens = max_n_tokens
         self.max_n_attack_attempts = max_n_attack_attempts
 
-        from config import ATTACK_TEMP, ATTACK_TOP_P
+        from .config import ATTACK_TEMP, ATTACK_TOP_P
         self.temperature = ATTACK_TEMP
         self.top_p = ATTACK_TOP_P
 
@@ -171,7 +171,7 @@ class TargetLM():
         self.use_jailbreakbench = use_jailbreakbench
         self.evaluate_locally = evaluate_locally
 
-        from config import TARGET_TEMP,  TARGET_TOP_P   
+        from .config import TARGET_TEMP,  TARGET_TOP_P   
         self.temperature = TARGET_TEMP
         self.top_p = TARGET_TOP_P
 

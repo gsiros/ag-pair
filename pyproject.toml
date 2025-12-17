@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "PAIR"
+version = "0.1.0"
+description = "PAIR jailbreak framework components"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "accelerate",
+    "fastchat",
+    "litellm",
+    "pandas",
+    "psutil",
+    "transformers",
+    "wandb",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
