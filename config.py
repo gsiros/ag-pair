@@ -14,10 +14,12 @@ class Model(Enum):
     llama_2 = "llama-2-7b-chat-hf"
     gpt_3_5 = "gpt-3.5-turbo-1106"
     gpt_4 = "gpt-4-0125-preview"
+    gpt_4o = "gpt-4o"
     claude_1 = "claude-instant-1.2"
     claude_2 = "claude-2.1"
     gemini = "gemini-pro"
     mixtral = "mixtral"
+    qwen = "Qwen/Qwen3-VL-32B-Instruct"
 
 MODEL_NAMES = [model.value for model in Model]
 
@@ -25,7 +27,8 @@ MODEL_NAMES = [model.value for model in Model]
 HF_MODEL_NAMES: dict[Model, str] = {
     Model.llama_2: "meta-llama/Llama-2-7b-chat-hf",
     Model.vicuna: "lmsys/vicuna-13b-v1.5",
-    Model.mixtral: "mistralai/Mixtral-8x7B-Instruct-v0.1"
+    Model.mixtral: "mistralai/Mixtral-8x7B-Instruct-v0.1",
+    Model.qwen: "Qwen/Qwen3-VL-32B-Instruct"
 }
 
 TOGETHER_MODEL_NAMES: dict[Model, str] = {
@@ -37,23 +40,27 @@ TOGETHER_MODEL_NAMES: dict[Model, str] = {
 FASTCHAT_TEMPLATE_NAMES: dict[Model, str] = {
     Model.gpt_3_5: "gpt-3.5-turbo",
     Model.gpt_4: "gpt-4",
+    Model.gpt_4o: "gpt-4o",
     Model.claude_1: "claude-instant-1.2",
     Model.claude_2: "claude-2.1",
     Model.gemini: "gemini-pro",
     Model.vicuna: "vicuna_v1.1",
     Model.llama_2: "llama-2-7b-chat-hf",
     Model.mixtral: "mixtral",
+    Model.qwen: "Qwen/Qwen3-VL-32B-Instruct"
 }
 
 API_KEY_NAMES: dict[Model, str] = {
     Model.gpt_3_5:  "OPENAI_API_KEY",
     Model.gpt_4:    "OPENAI_API_KEY",
+    Model.gpt_4o:   "OPENAI_API_KEY",
     Model.claude_1: "ANTHROPIC_API_KEY",
     Model.claude_2: "ANTHROPIC_API_KEY",
     Model.gemini:   "GEMINI_API_KEY",
     Model.vicuna:   "TOGETHER_API_KEY",
     Model.llama_2:  "TOGETHER_API_KEY",
     Model.mixtral:  "TOGETHER_API_KEY",
+    Model.qwen:     "OPENAI_API_KEY",
 }
 
 LITELLM_TEMPLATES: dict[Model, dict] = {
