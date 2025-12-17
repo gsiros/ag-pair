@@ -67,6 +67,8 @@ def main(args):
         print(f"Memory after: {memory_after} MB")
         # Get target responses
         adv_prompt_list = [transcript_step.replace("[MALICIOUS_INSTRUCTION_PLACEHOLDER]", prompt) if transcript_step is not None else prompt for prompt in adv_prompt_list]
+        for adv_prmpt in adv_prompt_list:
+            assert "[MALICIOUS_INSTRUCTION_PLACEHOLDER]" not in adv_prmpt, "The malicious instruction placeholder was not replaced correctly."
         target_response_list = targetLM.get_response(adv_prompt_list)
         logger.debug("Finished getting target responses.")
         
