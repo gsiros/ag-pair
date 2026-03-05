@@ -25,11 +25,11 @@ def load_indiv_model(model_name, local = False, use_jailbreakbench=True):
     if use_jailbreakbench: 
         if local:
             from jailbreakbench import LLMvLLM
-            lm = LLMvLLM(model_name=model_name)
+            lm = LLMvLLM(model_name=model_name.lower())
         else:
             from jailbreakbench import LLMLiteLLM
-            api_key = get_api_key(Model(model_name))
-            lm = LLMLiteLLM(model_name= model_name, api_key = api_key)
+            api_key = get_api_key(Model(model_name.lower()))
+            lm = LLMLiteLLM(model_name= model_name.lower(), api_key = api_key)
     else:
         if local:
             raise NotImplementedError

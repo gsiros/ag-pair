@@ -26,7 +26,7 @@ class APILiteLLM(LanguageModel):
         self.api_key = get_api_key(self.model_name)
         self.litellm_model_name = self.get_litellm_model_name(self.model_name)
         if "qwen" in self.model_name.value.lower():
-            self.base_url = os.environ.get("QWEN_API_BASE", None)
+            self.base_url = os.environ.get("QWEN_API_BASE", "http://localhost:6666/v1")
         else:
             self.base_url = None
         litellm.drop_params=True
