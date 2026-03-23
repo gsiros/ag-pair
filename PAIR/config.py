@@ -18,6 +18,8 @@ class Model(Enum):
     gpt_4o_mini = "gpt-4o-mini"
     gpt_4o = "gpt-4o"
     gpt_5 = "gpt-5"
+    gpt_5_4_mini = "gpt-5.4-mini"
+    gpt_5_4_nano = "gpt-5.4-nano"
     claude_1 = "claude-instant-1.2"
     claude_2 = "claude-2.1"
     gemini = "gemini-pro"
@@ -47,6 +49,8 @@ FASTCHAT_TEMPLATE_NAMES: dict[Model, str] = {
     Model.gpt_4o_mini: "gpt-4o-mini",
     Model.gpt_4o: "gpt-4o",
     Model.gpt_5: "gpt-5",
+    Model.gpt_5_4_mini: "gpt-5.4-mini",
+    Model.gpt_5_4_nano: "gpt-5.4-nano",
     Model.claude_1: "claude-instant-1.2",
     Model.claude_2: "claude-2.1",
     Model.gemini: "gemini-pro",
@@ -63,6 +67,8 @@ API_KEY_NAMES: dict[Model, str] = {
     Model.gpt_4o_mini:"OPENAI_API_KEY",
     Model.gpt_4o:   "OPENAI_API_KEY",
     Model.gpt_5:    "OPENAI_API_KEY",
+    Model.gpt_5_4_mini: "OPENAI_API_KEY",
+    Model.gpt_5_4_nano: "OPENAI_API_KEY",
     Model.claude_1: "ANTHROPIC_API_KEY",
     Model.claude_2: "ANTHROPIC_API_KEY",
     Model.gemini:   "GEMINI_API_KEY",

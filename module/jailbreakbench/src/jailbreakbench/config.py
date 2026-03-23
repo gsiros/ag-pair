@@ -11,6 +11,8 @@ class Model(Enum):
     gpt_4o_mini = "gpt-4o-mini"
     gpt_4o = "gpt-4o"
     gpt_5 = "gpt-5"
+    gpt_5_4_mini = "gpt-5.4-mini"
+    gpt_5_4_nano = "gpt-5.4-nano"
     qwen = "qwen/qwen3-vl-32b-instruct"
 
 
@@ -37,6 +39,8 @@ API_KEYS: dict[Model, str] = {
     Model.gpt_4o: "OPENAI_API_KEY",
     Model.gpt_4o_mini: "OPENAI_API_KEY",
     Model.gpt_5: "OPENAI_API_KEY",
+    Model.gpt_5_4_mini: "OPENAI_API_KEY",
+    Model.gpt_5_4_nano: "OPENAI_API_KEY",
     Model.qwen: "OPENAI_API_KEY",
 }
 
@@ -69,6 +73,8 @@ LITELLM_MODEL_NAMES: dict[Model, str] = {
     Model.gpt_4o: "gpt-4o",
     Model.gpt_4o_mini: "gpt-4o-mini",
     Model.gpt_5: "gpt-5",
+    Model.gpt_5_4_mini: "openai/gpt-5.4-mini",
+    Model.gpt_5_4_nano: "openai/gpt-5.4-nano",
     Model.qwen: "openai/qwen/qwen3-vl-32b-instruct"
 }
 
@@ -81,6 +87,8 @@ SYSTEM_PROMPTS: dict[Model, str | None] = {
     Model.gpt_4o_mini: None,
     Model.gpt_4o: None,
     Model.gpt_5: None,
+    Model.gpt_5_4_mini: None,
+    Model.gpt_5_4_mini: None,
     Model.qwen: None,
 }
 
