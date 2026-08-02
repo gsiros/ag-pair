@@ -7,13 +7,16 @@ class Model(Enum):
     llama_2 = "llama-2-7b-chat-hf"
     gpt_3_5 = "gpt-3.5-turbo-1106"
     gpt_4 = "gpt-4-0125-preview"
+    gpt_4_turbo = "gpt-4-turbo"
     gpt_4_1 = "gpt-4.1"
     gpt_4o_mini = "gpt-4o-mini"
     gpt_4o = "gpt-4o"
-    gpt_5 = "gpt-5"
+    gpt_5 = "gpt-5-2025-08-07"
     gpt_5_4_mini = "gpt-5.4-mini"
     gpt_5_4_nano = "gpt-5.4-nano"
     qwen = "qwen/qwen3-vl-32b-instruct"
+    qwen3_5 = "qwen/qwen3.5-27b"
+    gemma4 = "google/gemma-4-31B-it"
 
 
 MODEL_NAMES = [model.value for model in Model]
@@ -35,6 +38,7 @@ API_KEYS: dict[Model, str] = {
     Model.vicuna: "TOGETHER_API_KEY",
     Model.gpt_3_5: "OPENAI_API_KEY",
     Model.gpt_4: "OPENAI_API_KEY",
+    Model.gpt_4_turbo: "OPENAI_API_KEY",
     Model.gpt_4_1: "OPENAI_API_KEY",
     Model.gpt_4o: "OPENAI_API_KEY",
     Model.gpt_4o_mini: "OPENAI_API_KEY",
@@ -42,6 +46,8 @@ API_KEYS: dict[Model, str] = {
     Model.gpt_5_4_mini: "OPENAI_API_KEY",
     Model.gpt_5_4_nano: "OPENAI_API_KEY",
     Model.qwen: "OPENAI_API_KEY",
+    Model.qwen3_5: "OPENAI_API_KEY",
+    Model.gemma4: "OPENAI_API_KEY"
 }
 
 
@@ -69,13 +75,16 @@ LITELLM_MODEL_NAMES: dict[Model, str] = {
     Model.vicuna: "together_ai/lmsys/vicuna-13b-v1.5",
     Model.gpt_3_5: "gpt-3.5-turbo-1106",
     Model.gpt_4: "gpt-4-0125-preview",
+    Model.gpt_4_turbo: "openai/gpt-4-turbo",
     Model.gpt_4_1: "gpt-4.1",
     Model.gpt_4o: "gpt-4o",
     Model.gpt_4o_mini: "gpt-4o-mini",
-    Model.gpt_5: "gpt-5",
+    Model.gpt_5: "openai/gpt-5-2025-08-07",
     Model.gpt_5_4_mini: "openai/gpt-5.4-mini",
     Model.gpt_5_4_nano: "openai/gpt-5.4-nano",
-    Model.qwen: "openai/qwen/qwen3-vl-32b-instruct"
+    Model.qwen: "openai/qwen/qwen3-vl-32b-instruct",
+    Model.qwen3_5: "openai/qwen/qwen3.5-27b",
+    Model.gemma4: "openai/google/gemma-4-31B-it"
 }
 
 SYSTEM_PROMPTS: dict[Model, str | None] = {
@@ -83,13 +92,15 @@ SYSTEM_PROMPTS: dict[Model, str | None] = {
     Model.vicuna: "A chat between a curious user and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the user's questions.",
     Model.gpt_3_5: None,
     Model.gpt_4: None,
+    Model.gpt_4_turbo: None,
     Model.gpt_4_1: None,
     Model.gpt_4o_mini: None,
     Model.gpt_4o: None,
     Model.gpt_5: None,
     Model.gpt_5_4_mini: None,
-    Model.gpt_5_4_mini: None,
     Model.qwen: None,
+    Model.qwen3_5: None,
+    Model.gemma4: None
 }
 
 VICUNA_HF_CHAT_TEMPLATE = """\

@@ -41,7 +41,7 @@ class LLMLiteLLM(LLM):
         else:
             self.tokenizer = None
         
-        if "qwen" in model_name.lower():
+        if "qwen" in model_name.lower() or "gemma" in model_name.lower():
             self.base_url = "http://localhost:6666/v1"
         else:
             self.base_url = None

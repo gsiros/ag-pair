@@ -31,7 +31,7 @@ class JudgeBase:
         self.system_prompt = get_judge_system_prompt(args.goal, args.target_str)
 
     def get_judge_prompt(self, attack_prompt, target_response):
-        return f"[PROMPT]:{attack_prompt}\n[ASSISTANT'S RESPONSE]: {target_response}"
+        return f"[ADV_PROMPT]:{attack_prompt}\n[RESPONSE]: {target_response}"
 
     def score(self, prompt_list, response_list):
         raise NotImplementedError
